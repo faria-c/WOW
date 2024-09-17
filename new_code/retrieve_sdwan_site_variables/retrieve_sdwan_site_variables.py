@@ -49,9 +49,9 @@ def retrieve_sdwan_site_variables(vmanage_host, session):
         response.raise_for_status()
 
 # Example usage
-vmanage_host = "vmanage_host_ip"  # Replace with vManage host IP or hostname
-username = "admin"  # Replace with vManage username
-password = "password"  # Replace with vManage password
+vmanage_host = "192.168.0.50"  # Replace with vManage host IP or hostname
+username = "labuser"  # Replace with vManage username
+password = "Labpass01!"  # Replace with vManage password
 
 # Authenticate and retrieve site variables
 session = authenticate_vmanage(vmanage_host, username, password)
