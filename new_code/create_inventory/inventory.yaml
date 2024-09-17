@@ -1,0 +1,14 @@
+devices:
+- commands:
+  - show vlan
+  config_commands:
+  - optional
+  connection_details:
+    auth_password: C1sco12345
+    auth_strict_key: 'false'
+    auth_username: admin
+    host: devnetsandboxiosxe.cisco.com
+    platform: cisco_iosxe
+  hostname: core_switch_1
+  roles: core
+  site: site_a
