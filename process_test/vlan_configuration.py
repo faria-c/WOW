@@ -45,42 +45,43 @@ def configure_vlan(device, vlan_id=400):
             output = send_command(remote_conn, "enable", 1)
             output += send_command(remote_conn, "show version", 1)
 
-            if "Controller mode" in output:
-                logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
-                output += send_command(remote_conn, "config-transaction", 1)
-            else:
-                logging.info(f"{device['hostname']} is not in Controller mode, using config-transaction.")
-                output += send_command(remote_conn, "config-transaction", 1)
-
-            # Check if VLAN exists
+            # Check if VLAN exists before entering config-transaction mode
             check_vlan_command = f"show vlan brief | include {vlan_id}"
             logging.info(f"Running VLAN check command on {device['hostname']}: {check_vlan_command}")
-            output += send_command(remote_conn, check_vlan_command, 2)
-            logging.info(f"VLAN check output for {device['hostname']}: {output}")
+            vlan_check_output = send_command(remote_conn, check_vlan_command, 2)
 
-            if str(vlan_id) in output:
+            if str(vlan_id) in vlan_check_output:
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
             else:
-                logging.info(f"VLAN {vlan_id} does not exist on {device['hostname']}. Creating VLAN.")
-                
-                # Create VLAN
-                output += send_command(remote_conn, f"vlan {vlan_id}", 1)
-                output += send_command(remote_conn, "exit", 1)
+                # If VLAN does not exist, enter configuration mode or config-transaction mode
+                if "Controller mode" in output:
+                    logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
+                    send_command(remote_conn, "config-transaction", 1)
+                else:
+                    logging.info(f"{device['hostname']} is not in Controller mode, using configure terminal.")
+                    send_command(remote_conn, "configure terminal", 1)
 
-                # Update trunk ports (this is a simplified example)
+                # Create VLAN
+                vlan_create_command = f"vlan {vlan_id}"
+                logging.info(f"Creating VLAN {vlan_id} on {device['hostname']}")
+                send_command(remote_conn, vlan_create_command, 1)
+                send_command(remote_conn, "exit", 1)
+
+                # Update trunk ports (adjust based on your network)
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:  # Adjust based on your network
                     trunk_command = f"interface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}"
                     logging.info(f"Running trunk port update command on {device['hostname']}: {trunk_command}")
-                    output += send_command(remote_conn, trunk_command, 1)
-                    output += send_command(remote_conn, "exit", 1)
+                    send_command(remote_conn, trunk_command, 1)
+                    send_command(remote_conn, "exit", 1)
 
                 logging.info(f"VLAN {vlan_id} and trunk configuration completed on {device['hostname']}.")
 
-            # Exit configuration mode or commit transaction
-            if "Controller mode" in output:
-                output += send_command(remote_conn, "commit", 1)
-            else:
-                output += send_command(remote_conn, "end", 1)
+                # Exit configuration mode or commit transaction
+                if "Controller mode" in output:
+                    send_command(remote_conn, "commit", 1)
+                else:
+                    send_command(remote_conn, "end", 1)
+
             ssh.close()
 
     except Exception as e:
