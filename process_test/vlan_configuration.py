@@ -45,6 +45,6 @@ def configure_vlan(device, vlan_id=400):
 with open('inventory.yaml', 'r') as file:
     inventory = yaml.safe_load(file)
 
-# Configure VLAN for all devices
-for device in inventory['devices']:
+# Configure VLAN for networking devices only
+for device in inventory.get('networking_devices_for_vlan_changes', []):
     configure_vlan(device)
