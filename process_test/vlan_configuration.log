@@ -1,0 +1,190 @@
+INFO:root:Connecting to CL1-cEdge-1 at 192.168.0.70
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-cEdge-1.
+INFO:root:Detailed VLAN 400 configuration on CL1-cEdge-1: show running-config | section vlan 400
+CL1-cEdge-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on CL1-cEdge-1: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL1-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on CL1-cEdge-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on CL1-cEdge-1: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL1-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on CL1-cEdge-1.
+INFO:root:Connecting to CL1-cEdge-2 at 192.168.0.71
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-cEdge-2.
+INFO:root:Detailed VLAN 400 configuration on CL1-cEdge-2: show running-config | section vlan 400
+CL1-cEdge-2#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on CL1-cEdge-2: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL1-cEdge-2#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on CL1-cEdge-2.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on CL1-cEdge-2: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL1-cEdge-2#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on CL1-cEdge-2.
+INFO:root:Connecting to BR1-cEdge-1 at 192.168.0.72
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR1-cEdge-1.
+INFO:root:Detailed VLAN 400 configuration on BR1-cEdge-1: show running-config | section vlan 400
+BR1-cEdge-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on BR1-cEdge-1: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR1-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on BR1-cEdge-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on BR1-cEdge-1: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR1-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on BR1-cEdge-1.
+INFO:root:Connecting to BR1-cEdge-2 at 192.168.0.73
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR1-cEdge-2.
+INFO:root:Detailed VLAN 400 configuration on BR1-cEdge-2: show running-config | section vlan 400
+BR1-cEdge-2#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on BR1-cEdge-2: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR1-cEdge-2#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on BR1-cEdge-2.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on BR1-cEdge-2: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR1-cEdge-2#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on BR1-cEdge-2.
+INFO:root:Connecting to BR2-cEdge-1 at 192.168.0.74
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR2-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR2-cEdge-1.
+INFO:root:Detailed VLAN 400 configuration on BR2-cEdge-1: show running-config | section vlan 400
+BR2-cEdge-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on BR2-cEdge-1: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR2-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on BR2-cEdge-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on BR2-cEdge-1: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR2-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on BR2-cEdge-1.
+INFO:root:Connecting to CL2-vEdge-1 at 192.168.0.80
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL2-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL2-vEdge-1.
+INFO:root:Detailed VLAN 400 configuration on CL2-vEdge-1: show running-config | section vlan 400
+CL2-cEdge-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on CL2-vEdge-1: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL2-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on CL2-vEdge-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on CL2-vEdge-1: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+CL2-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on CL2-vEdge-1.
+INFO:root:Connecting to BR3-vEdge-1 at 192.168.0.81
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR3-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR3-vEdge-1.
+INFO:root:Detailed VLAN 400 configuration on BR3-vEdge-1: show running-config | section vlan 400
+BR3-cEdge-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on BR3-vEdge-1: show running-config interface GigabitEthernet1/0/1
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR3-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on BR3-vEdge-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on BR3-vEdge-1: show running-config interface GigabitEthernet1/0/2
+                                                          ^
+% Invalid input detected at '^' marker.
+
+BR3-cEdge-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on BR3-vEdge-1.
+INFO:root:Connecting to xDomain-Router at 192.168.0.90
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on xDomain-Router: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on xDomain-Router.
+INFO:root:Detailed VLAN 400 configuration on xDomain-Router: show running-config | section vlan 400
+xDomain-Router#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on xDomain-Router: show running-config interface GigabitEthernet1/0/1
+                                                             ^
+% Invalid input detected at '^' marker.
+
+xDomain-Router#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on xDomain-Router.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on xDomain-Router: show running-config interface GigabitEthernet1/0/2
+                                                             ^
+% Invalid input detected at '^' marker.
+
+xDomain-Router#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on xDomain-Router.
+INFO:root:Connecting to CL1-Core-1 at 192.168.0.91
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-Core-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-Core-1.
+INFO:root:Detailed VLAN 400 configuration on CL1-Core-1: show running-config | section vlan 400
+CL1-Core-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on CL1-Core-1: show running-config interface GigabitEthernet1/0/1
+                                                         ^
+% Invalid input detected at '^' marker.
+
+CL1-Core-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on CL1-Core-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on CL1-Core-1: show running-config interface GigabitEthernet1/0/2
+                                                         ^
+% Invalid input detected at '^' marker.
+
+CL1-Core-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on CL1-Core-1.
+INFO:root:Connecting to CL2-Core-1 at 192.168.0.92
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL2-Core-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL2-Core-1.
+INFO:root:Detailed VLAN 400 configuration on CL2-Core-1: show running-config | section vlan 400
+CL2-Core-1#
+INFO:root:Trunk port GigabitEthernet1/0/1 config on CL2-Core-1: show running-config interface GigabitEthernet1/0/1
+                                                         ^
+% Invalid input detected at '^' marker.
+
+CL2-Core-1#
+WARNING:root:Trunk port GigabitEthernet1/0/1 does not allow VLAN 400 on CL2-Core-1.
+INFO:root:Trunk port GigabitEthernet1/0/2 config on CL2-Core-1: show running-config interface GigabitEthernet1/0/2
+                                                         ^
+% Invalid input detected at '^' marker.
+
+CL2-Core-1#
+WARNING:root:Trunk port GigabitEthernet1/0/2 does not allow VLAN 400 on CL2-Core-1.
