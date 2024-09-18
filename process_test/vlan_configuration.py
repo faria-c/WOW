@@ -49,8 +49,8 @@ def configure_vlan(device, vlan_id=400):
                 logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
                 output += send_command(remote_conn, "config-transaction", 1)
             else:
-                logging.info(f"{device['hostname']} is not in Controller mode, using configure terminal.")
-                output += send_command(remote_conn, "configure terminal", 1)
+                logging.info(f"{device['hostname']} is not in Controller mode, using config-transaction.")
+                output += send_command(remote_conn, "config-transaction", 1)
 
             # Check if VLAN exists
             check_vlan_command = f"show vlan brief | include {vlan_id}"
