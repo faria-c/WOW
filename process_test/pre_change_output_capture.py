@@ -7,13 +7,18 @@ import os
 logging.basicConfig(filename='pre_change_capture.log', level=logging.INFO)
 
 def capture_pre_change_output(device, output_dir):
-    logging.info(f"Connecting to {device['hostname']} at {device['connection_details']['host']}")
-    
-    # Create output directory if it doesn't exist
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    
     try:
+        # Check if connection_details exist in the device dictionary
+        if 'connection_details' not in device:
+            logging.error(f"Missing connection details for {device['hostname']}")
+            return
+        
+        logging.info(f"Connecting to {device['hostname']} at {device['connection_details']['host']}")
+        
+        # Create output directory if it doesn't exist
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        
         if device['connection_details']['method'] == 'SSH':
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -32,6 +37,8 @@ def capture_pre_change_output(device, output_dir):
             logging.info(f"Captured pre-change config for {device['hostname']} and saved to {output_file}")
             ssh.close()
 
+    except KeyError as ke:
+        logging.error(f"KeyError: {ke} in device: {device['hostname']}")
     except Exception as e:
         logging.error(f"Error capturing config from {device['hostname']}: {str(e)}")
 
