@@ -10,12 +10,21 @@ def csv_to_yaml(csv_file, yaml_file):
         for row in csv_reader:
             connection_details = row['connection_details'].split(", ")
 
-            # Handle missing fields with default values (if a field is missing)
-            host = connection_details[0].split(": ")[1] if len(connection_details) > 0 else "N/A"
-            method = connection_details[1].split(": ")[1] if len(connection_details) > 1 else "N/A"
-            username = connection_details[2].split(": ")[1] if len(connection_details) > 2 else "N/A"
-            password = connection_details[3].split(": ")[1] if len(connection_details) > 3 else "N/A"
+            # Initialize default values for connection details
+            host, method, username, password = "N/A", "N/A", "N/A", "N/A"
 
+            # Parse connection details and handle missing values
+            for detail in connection_details:
+                if "host" in detail:
+                    host = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
+                elif "method" in detail:
+                    method = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
+                elif "username" in detail:
+                    username = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
+                elif "password" in detail:
+                    password = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
+
+            # Build device entry
             device = {
                 "hostname": row['hostname'],
                 "site": row['site'],
