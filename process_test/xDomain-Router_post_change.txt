@@ -1,0 +1,450 @@
+
+
+Building configuration...
+
+Current configuration : 11907 bytes
+!
+! Last configuration change at 23:49:38 UTC Mon Sep 16 2024
+!
+version 17.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname xDomain-Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Data_Center
+ rd 64512:30
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition Partner_VPN
+ rd 64512:50
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition Public_Cloud
+ rd 64512:40
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name wwtatc.local
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3491086557
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3491086557
+ revocation-check none
+ rsakeypair TP-self-signed-3491086557
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain TP-self-signed-3491086557
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33343931 30383635 3537301E 170D3233 30373235 31363136 
+  32355A17 0D333330 37323431 36313632 355A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 34393130 
+  38363535 37308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100B7B7 11588257 3D283B01 21F41C70 BAAD7C9D 8B7CC210 B8299F9B 
+  FBB7501E C23178DE C7664F73 CED680BE FDF0871D BF9B3387 E117F1C4 5663AE4D 
+  8539FBDA 7FC29E48 D7777A83 698385F9 B807B9D3 ABFD0E32 CBD15819 9FF53606 
+  935B6DBB 8F493F55 9385B2C1 5CF62AE1 6406932A 7DD4111B DA867FFE 72341817 
+  AC89EA54 928EF6B5 2747E16A 2D2B1460 C70BC9FA 8B2CFD5B 44BEC91A 6A85D145 
+  C216189A DF5D675A 2DA816B1 F4AB28FC B785E68B 228AE19B 9E15D31A DC0F0D20 
+  E01A0A80 47480C76 7A158FC0 418F0DEF C91EF6BF F1C0DDBD 8040DF48 5AF27BBE 
+  1BB084B2 A0713964 B80F05D8 5F54EB4C DC864230 1540428E 919EAEDE 5CFC1369 
+  3311F887 C8FF0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 148D30BE B47FD4F3 59E65B48 B411ADDA EC0CB380 
+  93301D06 03551D0E 04160414 8D30BEB4 7FD4F359 E65B48B4 11ADDAEC 0CB38093 
+  300D0609 2A864886 F70D0101 05050003 82010100 735BD1CB 4F2F96BA 2A701E5E 
+  FA3B4909 AC76D045 45431BF5 D3C0A9DB C51D6663 2252C385 30F2E882 2774214A 
+  ABDCE596 304E9ADA 8F2CA6A7 B3191FFB DDCFCDD2 74A4A77F 76883A02 EE98AF0D 
+  03225981 D5C3BA4B B77D5AB0 FFB24989 BE72C60C D62E5499 44579FD0 41FBFF2D 
+  EB50C006 B603BF8D D209FD2D 0FAB0975 871703CF 70BF1096 B86C91E2 CFC5E5BC 
+  B3D6DA17 5EC4A974 3182B61F 0225566F D366B74A CC034630 330B7BA3 B5FA2A77 
+  541DFCAE D81A4296 5BEC945C 1E9F3BC2 5B44FF45 DDCCA863 1B3597B4 CD7ABCAF 
+  DFA64E22 8C7C3B32 F39C3D06 0C4B11F7 0627C9D3 F0BC4E8C 5E2B72E9 249CCC00 
+  52493B9F FB2BC203 3AA096D9 14289CCE E6EDA6EF
+  	quit
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid C8000V sn 950O1U0WCKJ
+license boot level network-advantage addon dna-advantage
+diagnostic bootup level minimal
+memory free low-watermark processor 68425
+!
+!
+spanning-tree extend system-id
+!
+username labuser privilege 15 secret 9 $9$h3vrBW/K6VZrj.$kylVxyJmsInMH2ma3eS.nag7SC7UmB6Ju8XJrwdAd2g
+username admin privilege 15 secret 9 $9$Yyl25G6Itpmkd.$BTfaaHw89KSsaMlRFC/USsXe1WduBZzYsH8hxrbq9ec
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ description Colocation Interconnect
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet1.130
+ description to CL1 Corporate
+ encapsulation dot1Q 130
+ vrf forwarding Data_Center
+ ip address 10.32.130.1 255.255.255.252
+!
+interface GigabitEthernet1.140
+ description to CL1 Cloud
+ encapsulation dot1Q 140
+ vrf forwarding Public_Cloud
+ ip address 169.254.0.1 255.255.255.252
+!
+interface GigabitEthernet1.150
+ description to CL1 Partner
+ encapsulation dot1Q 150
+ vrf forwarding Partner_VPN
+ ip address 172.16.0.1 255.255.255.252
+!
+interface GigabitEthernet1.151
+ description to CL1 Partner | Isolated
+ encapsulation dot1Q 151
+ vrf forwarding Partner_VPN
+ ip address 172.16.0.5 255.255.255.252
+!
+interface GigabitEthernet1.230
+ description to CL2 Corporate
+ encapsulation dot1Q 230
+ vrf forwarding Data_Center
+ ip address 10.64.130.1 255.255.255.252
+!
+interface GigabitEthernet1.240
+ description to CL2 Cloud
+ encapsulation dot1Q 240
+ vrf forwarding Public_Cloud
+ ip address 169.254.1.1 255.255.255.252
+!
+interface GigabitEthernet1.250
+ description to CL2 Partner
+ encapsulation dot1Q 250
+ vrf forwarding Partner_VPN
+ ip address 172.17.0.1 255.255.255.252
+!
+interface GigabitEthernet1.251
+ description to CL2 Partner | Isolated
+ encapsulation dot1Q 251
+ vrf forwarding Partner_VPN
+ ip address 172.17.0.5 255.255.255.252
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ description Data Center LAN
+ vrf forwarding Data_Center
+ ip address 10.1.1.1 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ description Partner VPN Extranet
+ vrf forwarding Partner_VPN
+ ip address 172.18.1.1 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet6
+ description Public Cloud VPC
+ vrf forwarding Public_Cloud
+ ip address 10.16.1.1 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet7
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet8
+ description Management
+ vrf forwarding Mgmt-intf
+ ip address 192.168.0.90 255.255.254.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router bgp 64512
+ template peer-policy BGP-Peer-Policy
+  route-map Set-Route-Preference in
+  route-map Prevent-Transit out
+  send-community
+ exit-peer-policy
+ !
+ template peer-session BGP-Session-Policy
+  timers 7 21
+ exit-peer-session
+ !
+ bgp router-id 6.4.5.12
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ !
+ address-family ipv4 vrf Data_Center
+  network 10.1.1.0 mask 255.255.255.0
+  neighbor 10.32.130.2 remote-as 65010
+  neighbor 10.32.130.2 inherit peer-session BGP-Session-Policy
+  neighbor 10.32.130.2 activate
+  neighbor 10.32.130.2 inherit peer-policy BGP-Peer-Policy
+  neighbor 10.64.130.2 remote-as 65020
+  neighbor 10.64.130.2 inherit peer-session BGP-Session-Policy
+  neighbor 10.64.130.2 activate
+  neighbor 10.64.130.2 inherit peer-policy BGP-Peer-Policy
+ exit-address-family
+ !
+ address-family ipv4 vrf Partner_VPN
+  network 172.18.1.0 mask 255.255.255.0
+  neighbor 172.16.0.2 remote-as 65010
+  neighbor 172.16.0.2 inherit peer-session BGP-Session-Policy
+  neighbor 172.16.0.2 activate
+  neighbor 172.16.0.2 inherit peer-policy BGP-Peer-Policy
+  neighbor 172.16.0.6 remote-as 65010
+  neighbor 172.16.0.6 inherit peer-session BGP-Session-Policy
+  neighbor 172.16.0.6 activate
+  neighbor 172.16.0.6 inherit peer-policy BGP-Peer-Policy
+  neighbor 172.17.0.2 remote-as 65020
+  neighbor 172.17.0.2 inherit peer-session BGP-Session-Policy
+  neighbor 172.17.0.2 activate
+  neighbor 172.17.0.2 inherit peer-policy BGP-Peer-Policy
+  neighbor 172.17.0.6 remote-as 65020
+  neighbor 172.17.0.6 inherit peer-session BGP-Session-Policy
+  neighbor 172.17.0.6 activate
+  neighbor 172.17.0.6 inherit peer-policy BGP-Peer-Policy
+ exit-address-family
+ !
+ address-family ipv4 vrf Public_Cloud
+  network 10.16.1.0 mask 255.255.255.0
+  neighbor 169.254.0.2 remote-as 65010
+  neighbor 169.254.0.2 inherit peer-session BGP-Session-Policy
+  neighbor 169.254.0.2 activate
+  neighbor 169.254.0.2 inherit peer-policy BGP-Peer-Policy
+  neighbor 169.254.1.2 remote-as 65020
+  neighbor 169.254.1.2 inherit peer-session BGP-Session-Policy
+  neighbor 169.254.1.2 activate
+  neighbor 169.254.1.2 inherit peer-policy BGP-Peer-Policy
+ exit-address-family
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip bgp-community new-format
+ip community-list standard CoLo1 permit 100:100
+ip community-list standard CoLo2 permit 200:200
+ip community-list expanded CoLo1-Branch1-Branch2 permit _100:100_[1-2]000:[1-2]000_
+ip community-list expanded CoLo2-Branch3-Branch4 permit _200:200_[3-4]000:[3-4]000_
+ip as-path access-list 1 permit ^$
+ip ssh version 2
+!
+!
+!
+ip prefix-list Default-Route seq 5 permit 0.0.0.0/0
+!
+route-map Set-Route-Preference permit 10 
+ match community CoLo1-Branch1-Branch2
+ set local-preference 210
+!
+route-map Set-Route-Preference permit 20 
+ match community CoLo2-Branch3-Branch4
+ set local-preference 210
+!
+route-map Set-Route-Preference permit 30 
+ match ip address prefix-list Default-Route
+ match community CoLo1
+ set local-preference 210
+!
+route-map Set-Route-Preference permit 100 
+!
+route-map Prevent-Transit permit 10 
+ match as-path 1
+ set community 64512:100
+!
+!
+!
+!
+control-plane
+!
+!
+mgcp behavior rsip-range tgcp-only
+mgcp behavior comedia-role none
+mgcp behavior comedia-check-media-src disable
+mgcp behavior comedia-sdp-force disable
+!
+mgcp profile default
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+line vty 0
+ login local
+ transport input ssh
+line vty 1
+ login local
+ length 0
+ transport input ssh
+line vty 2 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+!
+end
