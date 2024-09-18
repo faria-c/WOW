@@ -1,0 +1,74 @@
+INFO:root:Validating configuration for TJ-INET
+ERROR:root:Pre or post change file not found for TJ-INET.
+INFO:root:Validating configuration for TJ-MPLS
+ERROR:root:Pre or post change file not found for TJ-MPLS.
+INFO:root:Validating configuration for vManage-1
+ERROR:root:Pre or post change file not found for vManage-1.
+INFO:root:Validating configuration for vSmart-1
+INFO:root:No changes detected for vSmart-1.
+INFO:root:Validating configuration for vSmart-2
+INFO:root:No changes detected for vSmart-2.
+INFO:root:Validating configuration for vBond-1
+INFO:root:No changes detected for vBond-1.
+INFO:root:Validating configuration for vBond-2
+INFO:root:No changes detected for vBond-2.
+INFO:root:Validating configuration for CL1-cEdge-1
+INFO:root:Configuration changes detected for CL1-cEdge-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL1-cEdge-1.
+INFO:root:Validating configuration for CL1-cEdge-2
+INFO:root:Configuration changes detected for CL1-cEdge-2.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL1-cEdge-2.
+INFO:root:Validating configuration for BR1-cEdge-1
+INFO:root:Configuration changes detected for BR1-cEdge-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for BR1-cEdge-1.
+INFO:root:Validating configuration for BR1-cEdge-2
+INFO:root:Configuration changes detected for BR1-cEdge-2.
+ERROR:root:VLAN 400 was not found in the post-change configuration for BR1-cEdge-2.
+INFO:root:Validating configuration for BR2-cEdge-1
+INFO:root:Configuration changes detected for BR2-cEdge-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for BR2-cEdge-1.
+INFO:root:Validating configuration for CL2-vEdge-1
+INFO:root:Configuration changes detected for CL2-vEdge-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL2-vEdge-1.
+INFO:root:Validating configuration for BR3-vEdge-1
+INFO:root:Configuration changes detected for BR3-vEdge-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for BR3-vEdge-1.
+INFO:root:Validating configuration for xDomain-Router
+INFO:root:Configuration changes detected for xDomain-Router.
+ERROR:root:VLAN 400 was not found in the post-change configuration for xDomain-Router.
+INFO:root:Validating configuration for CL1-Core-1
+INFO:root:Configuration changes detected for CL1-Core-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL1-Core-1.
+INFO:root:Validating configuration for CL2-Core-1
+INFO:root:Configuration changes detected for CL2-Core-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL2-Core-1.
+INFO:root:Validating configuration for CL2-Hub-1
+INFO:root:Configuration changes detected for CL2-Hub-1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for CL2-Hub-1.
+INFO:root:Validating configuration for BR4-Spoke1
+INFO:root:Configuration changes detected for BR4-Spoke1.
+ERROR:root:VLAN 400 was not found in the post-change configuration for BR4-Spoke1.
+INFO:root:Validating configuration for BR1-PC-Corp
+ERROR:root:Pre or post change file not found for BR1-PC-Corp.
+INFO:root:Validating configuration for BR1-PC-Partner
+ERROR:root:Pre or post change file not found for BR1-PC-Partner.
+INFO:root:Validating configuration for BR1-PC-Guest
+ERROR:root:Pre or post change file not found for BR1-PC-Guest.
+INFO:root:Validating configuration for BR2-PC-Corp
+ERROR:root:Pre or post change file not found for BR2-PC-Corp.
+INFO:root:Validating configuration for BR2-PC-Partner
+ERROR:root:Pre or post change file not found for BR2-PC-Partner.
+INFO:root:Validating configuration for BR2-PC-Guest
+ERROR:root:Pre or post change file not found for BR2-PC-Guest.
+INFO:root:Validating configuration for BR3-PC-Corp
+ERROR:root:Pre or post change file not found for BR3-PC-Corp.
+INFO:root:Validating configuration for BR4-PC-Corp
+ERROR:root:Pre or post change file not found for BR4-PC-Corp.
+INFO:root:Validating configuration for DC1-PC-Corp
+ERROR:root:Pre or post change file not found for DC1-PC-Corp.
+INFO:root:Validating configuration for Cloud-Ubuntu
+INFO:root:No changes detected for Cloud-Ubuntu.
+INFO:root:Validating configuration for Ansible-Tower
+ERROR:root:Pre or post change file not found for Ansible-Tower.
+INFO:root:Validating configuration for Partner-Ubuntu
+INFO:root:No changes detected for Partner-Ubuntu.
