@@ -7,10 +7,19 @@ import time
 logging.basicConfig(filename='vlan_configuration.log', level=logging.INFO)
 
 def send_command(shell, command, sleep=1):
-    """Send a command to the device and flush the buffer."""
+    """Send a command to the device, handle --More-- prompts, and flush the buffer."""
     shell.send(command + '\n')
     time.sleep(sleep)
-    output = shell.recv(65535).decode("utf-8")
+    output = ""
+    
+    while True:
+        if shell.recv_ready():
+            chunk = shell.recv(65535).decode("utf-8")
+            output += chunk
+            if "--More--" in chunk:
+                shell.send(" ")  # Send space to continue
+            else:
+                break
     return output
 
 def configure_vlan(device, vlan_id=400):
