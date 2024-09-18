@@ -1,11 +1,5 @@
 hostname,site,roles,commands,config_commands,connection_details
-TJ-INET,Colocation1,inet_router,"show running-config","vlan 400","host: 192.168.0.20, method: HTTP, username: n/a, password: n/a"
-TJ-MPLS,Colocation2,mpls_router,"show running-config","vlan 400","host: 192.168.0.21, method: HTTP, username: n/a, password: n/a"
 vManage-1,Colocation1,vmanage,"show sdwan control connections","sdwan config","host: 192.168.0.50, method: HTTPS, SSH, username: labuser, password: Labpass01!"
-vSmart-1,Colocation1,vsmart,"show sdwan control connections","sdwan config","host: 192.168.0.52, method: SSH, username: labuser, password: Labpass01!"
-vSmart-2,Colocation2,vsmart,"show sdwan control connections","sdwan config","host: 192.168.0.53, method: SSH, username: labuser, password: Labpass01!"
-vBond-1,Colocation1,vbond,"show sdwan control connections","sdwan config","host: 192.168.0.54, method: SSH, username: labuser, password: Labpass01!"
-vBond-2,Colocation2,vbond,"show sdwan control connections","sdwan config","host: 192.168.0.55, method: SSH, username: labuser, password: Labpass01!"
 CL1-cEdge-1,Branch1,cedge,"show running-config","vlan 400","host: 192.168.0.70, method: SSH, username: labuser, password: Labpass01!"
 CL1-cEdge-2,Branch2,cedge,"show running-config","vlan 400","host: 192.168.0.71, method: SSH, username: labuser, password: Labpass01!"
 BR1-cEdge-1,Branch1,cedge,"show running-config","vlan 400","host: 192.168.0.72, method: SSH, username: labuser, password: Labpass01!"
@@ -27,6 +21,4 @@ BR2-PC-Guest,Branch3,guest_pc,n/a,n/a,"host: 192.168.1.15, method: RDP, username
 BR3-PC-Corp,Branch4,corp_pc,n/a,n/a,"host: 192.168.1.16, method: RDP, username: labuser, password: Labpass01!"
 BR4-PC-Corp,Branch5,corp_pc,n/a,n/a,"host: 192.168.1.17, method: RDP, username: labuser, password: Labpass01!"
 DC1-PC-Corp,Branch6,corp_pc,n/a,n/a,"host: 192.168.1.18, method: RDP, username: labuser, password: Labpass01!"
-Cloud-Ubuntu,Colocation1,cloud_ubuntu,n/a,n/a,"host: 192.168.1.19, method: SSH, username: labuser, password: Labpass01!"
-Ansible-Tower,Branch7,ansible_tower,n/a,"systemctl restart network","host: 192.168.1.19, method: HTTPS, username: labuser, password: Labpass01!"
-Partner-Ubuntu,Branch7,partner_ubuntu,n/a,n/a,"host: 192.168.1.20, method: SSH, username: labuser, password: Labpass01!"
+
