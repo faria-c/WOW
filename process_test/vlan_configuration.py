@@ -11,12 +11,12 @@ def send_command(shell, command, sleep=1):
     shell.send(command + '\n')
     time.sleep(sleep)
     output = ""
-
+    
     while shell.recv_ready():
         chunk = shell.recv(65535).decode("utf-8")
         output += chunk
         if "--More--" in chunk:
-            shell.send(" ")
+            shell.send(" ")  # Press space to continue
     return output
 
 def configure_vlan(device, vlan_id=400):
@@ -77,6 +77,7 @@ def configure_vlan(device, vlan_id=400):
 
     except Exception as e:
         logging.error(f"Error configuring VLAN on {device['hostname']}: {str(e)}")
+        # Optionally, try to reconnect and continue configuration
 
 # Load inventory from YAML file
 with open('inventory.yaml', 'r') as file:
