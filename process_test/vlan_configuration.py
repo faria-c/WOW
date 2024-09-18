@@ -72,6 +72,9 @@ def configure_vlan(device, vlan_id=400):
                         logging.info(f"Trunk port {trunk_port} allows VLAN {vlan_id} on {device['hostname']}.")
                     else:
                         logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
+                        # Adding VLAN to trunk port
+                        logging.info(f"Adding VLAN {vlan_id} to trunk port {trunk_port} on {device['hostname']}.")
+                        send_command(remote_conn, f"configure terminal\ninterface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\nend", 1)
 
             else:
                 # If VLAN does not exist, enter configuration mode or config-transaction mode
