@@ -43,7 +43,7 @@ def capture_pre_change_output(device, output_dir):
         logging.error(f"Error capturing config from {device['hostname']}: {str(e)}")
 
 # Load inventory from YAML file
-with open('grouped_inventory.yaml', 'r') as file:
+with open('inventory.yaml', 'r') as file:
     inventory = yaml.safe_load(file)
 
 # Define output directory

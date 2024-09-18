@@ -1,22 +1,40 @@
-ERROR:root:Missing connection details for vManage-1
-ERROR:root:Missing connection details for CL1-cEdge-1
-ERROR:root:Missing connection details for CL1-cEdge-2
-ERROR:root:Missing connection details for BR1-cEdge-1
-ERROR:root:Missing connection details for BR1-cEdge-2
-ERROR:root:Missing connection details for BR2-cEdge-1
-ERROR:root:Missing connection details for CL2-vEdge-1
-ERROR:root:Missing connection details for BR3-vEdge-1
-ERROR:root:Missing connection details for xDomain-Router
-ERROR:root:Missing connection details for CL1-Core-1
-ERROR:root:Missing connection details for CL2-Core-1
-ERROR:root:Missing connection details for CL2-Hub-1
-ERROR:root:Missing connection details for BR4-Spoke1
-ERROR:root:Missing connection details for BR1-PC-Corp
-ERROR:root:Missing connection details for BR1-PC-Partner
-ERROR:root:Missing connection details for BR1-PC-Guest
-ERROR:root:Missing connection details for BR2-PC-Corp
-ERROR:root:Missing connection details for BR2-PC-Partner
-ERROR:root:Missing connection details for BR2-PC-Guest
-ERROR:root:Missing connection details for BR3-PC-Corp
-ERROR:root:Missing connection details for BR4-PC-Corp
-ERROR:root:Missing connection details for DC1-PC-Corp
+INFO:root:Connecting to CL1-cEdge-1 at 192.168.0.70
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for CL1-cEdge-1 and saved to pre_change_output\CL1-cEdge-1_pre_change.txt
+INFO:root:Connecting to CL1-cEdge-2 at 192.168.0.71
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for CL1-cEdge-2 and saved to pre_change_output\CL1-cEdge-2_pre_change.txt
+INFO:root:Connecting to BR1-cEdge-1 at 192.168.0.72
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for BR1-cEdge-1 and saved to pre_change_output\BR1-cEdge-1_pre_change.txt
+INFO:root:Connecting to BR1-cEdge-2 at 192.168.0.73
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for BR1-cEdge-2 and saved to pre_change_output\BR1-cEdge-2_pre_change.txt
+INFO:root:Connecting to BR2-cEdge-1 at 192.168.0.74
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for BR2-cEdge-1 and saved to pre_change_output\BR2-cEdge-1_pre_change.txt
+INFO:root:Connecting to CL2-vEdge-1 at 192.168.0.80
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for CL2-vEdge-1 and saved to pre_change_output\CL2-vEdge-1_pre_change.txt
+INFO:root:Connecting to BR3-vEdge-1 at 192.168.0.81
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for BR3-vEdge-1 and saved to pre_change_output\BR3-vEdge-1_pre_change.txt
+INFO:root:Connecting to xDomain-Router at 192.168.0.90
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for xDomain-Router and saved to pre_change_output\xDomain-Router_pre_change.txt
+INFO:root:Connecting to CL1-Core-1 at 192.168.0.91
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for CL1-Core-1 and saved to pre_change_output\CL1-Core-1_pre_change.txt
+INFO:root:Connecting to CL2-Core-1 at 192.168.0.92
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Captured pre-change config for CL2-Core-1 and saved to pre_change_output\CL2-Core-1_pre_change.txt
