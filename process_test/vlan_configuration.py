@@ -6,8 +6,8 @@ import time
 # Set up logging
 logging.basicConfig(filename='vlan_configuration.log', level=logging.INFO)
 
-def send_command(shell, command, sleep=1):
-    """Send a command to the device, handle --More-- prompts, and flush the buffer."""
+def send_command(shell, command, sleep=2):
+    """Send a command to the device and handle possible socket issues."""
     try:
         shell.send(command + '\n')
         time.sleep(sleep)
@@ -47,72 +47,41 @@ def configure_vlan(device, vlan_id=400):
 
             # Open interactive shell
             remote_conn = ssh.invoke_shell()
-            time.sleep(1)  # Give the shell time to initialize
+            time.sleep(2)  # Give the shell time to initialize
 
             # Flush the shell buffer
             remote_conn.recv(65535).decode("utf-8")
 
-            # Check if VLAN exists before entering config-transaction mode
+            # Check if VLAN exists
             check_vlan_command = f"show vlan brief | include {vlan_id}"
             logging.info(f"Running VLAN check command on {device['hostname']}: {check_vlan_command}")
             vlan_check_output = send_command(remote_conn, check_vlan_command, 2)
 
-            if str(vlan_id) in vlan_check_output:
+            if vlan_check_output and str(vlan_id) in vlan_check_output:
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
 
-                # **New Addition: Detailed VLAN Configuration and Trunk Port Check**
+                # Detailed VLAN Configuration and Trunk Port Check
                 detailed_vlan_config_command = f"show run | section vlan {vlan_id}"
                 detailed_vlan_config_output = send_command(remote_conn, detailed_vlan_config_command, 2)
                 logging.info(f"Detailed VLAN {vlan_id} configuration on {device['hostname']}: {detailed_vlan_config_output}")
 
-                # Check if specific trunk ports allow the VLAN using running-config
+                # Check and add VLAN to trunk ports
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:
-                    trunk_check_command = f"show interface {trunk_port} switchport"
+                    trunk_check_command = f"show running-config interface {trunk_port}"
                     trunk_config = send_command(remote_conn, trunk_check_command, 2)
-                    logging.info(f"Trunk port {trunk_port} config on {device['hostname']}: {trunk_config}")
-                    
-                    if f"switchport trunk allowed vlan {vlan_id}" in trunk_config:
-                        logging.info(f"Trunk port {trunk_port} allows VLAN {vlan_id} on {device['hostname']}.")
+                    if trunk_config:
+                        logging.info(f"Trunk port {trunk_port} config on {device['hostname']}: {trunk_config}")
+                        if f"switchport trunk allowed vlan {vlan_id}" not in trunk_config:
+                            logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
+                            # Adding VLAN to trunk port
+                            add_vlan_command = f"configure terminal\ninterface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\nend"
+                            send_command(remote_conn, add_vlan_command, 2)
+                            logging.info(f"Added VLAN {vlan_id} to trunk port {trunk_port} on {device['hostname']}.")
                     else:
-                        logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
-                        # Adding VLAN to trunk port
-                        logging.info(f"Adding VLAN {vlan_id} to trunk port {trunk_port} on {device['hostname']}.")
-                        add_vlan_command = f"configure terminal\ninterface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\nend"
-                        send_command(remote_conn, add_vlan_command, 1)
-
+                        logging.error(f"Failed to retrieve config for {trunk_port} on {device['hostname']}.")
             else:
-                # If VLAN does not exist, enter configuration mode or config-transaction mode
-                output = send_command(remote_conn, "enable", 1)
-                output += send_command(remote_conn, "show version", 1)
-
-                if "Controller mode" in output:
-                    logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
-                    send_command(remote_conn, "config-transaction", 1)
-                else:
-                    logging.info(f"{device['hostname']} is not in Controller mode, using configure terminal.")
-                    send_command(remote_conn, "configure terminal", 1)
-
-                # Create VLAN
-                vlan_create_command = f"vlan {vlan_id}"
-                logging.info(f"Creating VLAN {vlan_id} on {device['hostname']}")
-                send_command(remote_conn, vlan_create_command, 1)
-                send_command(remote_conn, "exit", 1)
-
-                # Update trunk ports (adjust based on your network)
-                for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:
-                    trunk_command = f"interface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}"
-                    logging.info(f"Running trunk port update command on {device['hostname']}: {trunk_command}")
-                    send_command(remote_conn, trunk_command, 1)
-                    send_command(remote_conn, "exit", 1)
-
-                logging.info(f"VLAN {vlan_id} and trunk configuration completed on {device['hostname']}.")
-
-                # Exit configuration mode or commit transaction
-                if "Controller mode" in output:
-                    send_command(remote_conn, "commit", 1)
-                else:
-                    send_command(remote_conn, "end", 1)
-
+                logging.error(f"VLAN {vlan_id} not found on {device['hostname']} or failed to retrieve VLAN info.")
+            
             ssh.close()
 
     except Exception as e:
