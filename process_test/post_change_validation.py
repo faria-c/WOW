@@ -1,9 +1,11 @@
 import os
+import yaml
 import logging
 
 # Set up logging
 logging.basicConfig(filename='post_change_validation.log', level=logging.INFO)
 
+# Function to validate configurations
 def validate_config(device):
     pre_change_file = f"{device['hostname']}_pre_change.txt"
     post_change_file = f"{device['hostname']}_post_change.txt"
@@ -22,12 +24,11 @@ def validate_config(device):
                     logging.info(f"No changes detected for {device['hostname']}.")
                 else:
                     logging.info(f"Configuration changes detected for {device['hostname']}.")
-                    # You can further analyze the differences by checking for specific VLAN entries.
+                    # Check for specific VLAN changes (e.g., VLAN 400)
                     if "vlan 400" in post_change_config:
                         logging.info(f"VLAN 400 exists in the post-change configuration for {device['hostname']}.")
                     else:
                         logging.error(f"VLAN 400 was not found in the post-change configuration for {device['hostname']}.")
-
         else:
             logging.error(f"Pre or post change file not found for {device['hostname']}.")
 
@@ -35,15 +36,10 @@ def validate_config(device):
         logging.error(f"Error validating configuration for {device['hostname']}: {str(e)}")
 
 
-# Example inventory to validate configurations (load from actual inventory.yaml)
-inventory = [
-    {"hostname": "BR1-cEdge-1"},
-    {"hostname": "BR1-cEdge-2"},
-    {"hostname": "BR2-cEdge-1"},
-    {"hostname": "BR3-vEdge-1"},
-    {"hostname": "BR4-Spoke1"}
-]
+# Load inventory from YAML file
+with open('inventory.yaml', 'r') as file:
+    inventory = yaml.safe_load(file)
 
-# Validate configurations for all devices
-for device in inventory:
+# Validate configurations for all devices in the inventory
+for device in inventory['devices']:
     validate_config(device)
