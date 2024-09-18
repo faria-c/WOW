@@ -1,0 +1,659 @@
+INFO:root:Connecting to CL1-cEdge-1 at 192.168.0.70
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:CL1-cEdge-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on CL1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN check output for CL1-cEdge-1: enable
+CL1-cEdge-1#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+CL1-cEdge-1 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 20:57:24 UTC Mon Aug 28 2023
+System restarted at 16:40:47 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332528K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+CL1-cEdge-1#config-transaction
+
+labuser connected from 127.0.0.1 using console on CL1-cEdge-1
+[?7hCL1-cEdge-1(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+CL1-cEdge-1(config)# 
+INFO:root:VLAN 400 already exists on CL1-cEdge-1.
+INFO:root:Connecting to CL1-cEdge-2 at 192.168.0.71
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:CL1-cEdge-2 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on CL1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN check output for CL1-cEdge-2: enable
+CL1-cEdge-2#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+CL1-cEdge-2 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 20:57:32 UTC Mon Aug 28 2023
+System restarted at 16:40:45 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332528K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+CL1-cEdge-2#config-transaction
+
+labuser connected from 127.0.0.1 using console on CL1-cEdge-2
+[?7hCL1-cEdge-2(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+CL1-cEdge-2(config)# 
+INFO:root:VLAN 400 already exists on CL1-cEdge-2.
+INFO:root:Connecting to BR1-cEdge-1 at 192.168.0.72
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:BR1-cEdge-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on BR1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN check output for BR1-cEdge-1: enable
+BR1-cEdge-1#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+BR1-cEdge-1 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 13:40:10 UTC Fri Sep 22 2023
+System restarted at 16:40:47 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332528K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+BR1-cEdge-1#config-transaction
+
+labuser connected from 127.0.0.1 using console on BR1-cEdge-1
+[?7hBR1-cEdge-1(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+BR1-cEdge-1(config)# 
+INFO:root:VLAN 400 already exists on BR1-cEdge-1.
+INFO:root:Connecting to BR1-cEdge-2 at 192.168.0.73
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:BR1-cEdge-2 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on BR1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN check output for BR1-cEdge-2: enable
+BR1-cEdge-2#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+BR1-cEdge-2 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 19:56:49 UTC Wed Aug 16 2023
+System restarted at 16:40:45 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332528K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+BR1-cEdge-2#config-transaction
+
+labuser connected from 127.0.0.1 using console on BR1-cEdge-2
+[?7hBR1-cEdge-2(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+BR1-cEdge-2(config)# 
+INFO:root:VLAN 400 already exists on BR1-cEdge-2.
+INFO:root:Connecting to BR2-cEdge-1 at 192.168.0.74
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:BR2-cEdge-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on BR2-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN check output for BR2-cEdge-1: enable
+BR2-cEdge-1#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+BR2-cEdge-1 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 13:40:18 UTC Fri Sep 22 2023
+System restarted at 16:40:46 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332520K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+BR2-cEdge-1#config-transaction
+
+labuser connected from 127.0.0.1 using console on BR2-cEdge-1
+[?7hBR2-cEdge-1(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+BR2-cEdge-1(config)# 
+INFO:root:VLAN 400 already exists on BR2-cEdge-1.
+INFO:root:Connecting to CL2-vEdge-1 at 192.168.0.80
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:CL2-vEdge-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on CL2-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN check output for CL2-vEdge-1: enable
+CL2-cEdge-1#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+CL2-cEdge-1 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 28 minutes
+ --More--         System returned to ROM by reload at 13:40:29 UTC Fri Sep 22 2023
+System restarted at 16:40:45 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332528K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+CL2-cEdge-1#config-transaction
+
+labuser connected from 127.0.0.1 using console on CL2-cEdge-1
+[?7hCL2-cEdge-1(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+CL2-cEdge-1(config)# 
+INFO:root:VLAN 400 already exists on CL2-vEdge-1.
+INFO:root:Connecting to BR3-vEdge-1 at 192.168.0.81
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:BR3-vEdge-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on BR3-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN check output for BR3-vEdge-1: enable
+BR3-cEdge-1#show version
+Cisco IOS XE Software, Version 17.09.05a
+Cisco IOS Software [Cupertino], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.9.5a, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2024 by Cisco Systems, Inc.
+Compiled Mon 12-Feb-24 11:53 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2024 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+BR3-cEdge-1 uptime is 4 hours, 27 minutes
+Uptime for this control processor is 4 hours, 29 minutes
+ --More--         System returned to ROM by reload at 19:24:29 UTC Thu Nov 9 2023
+System restarted at 16:40:45 UTC Wed Sep 18 2024
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+
+ --More--         Technology Package License Information:
+Controller-managed
+
+The current throughput level is 250000 kbps 
+
+
+Smart Licensing Status: Smart Licensing Using Policy
+
+cisco C8000V (VXE) processor (revision VXE) with 2212649K/3075K bytes of memory.
+Processor board ID 9AXDAUTF9QN
+Router operating mode: Controller-Managed
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332520K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+BR3-cEdge-1#config-transaction
+
+labuser connected from 127.0.0.1 using console on BR3-cEdge-1
+[?7hBR3-cEdge-1(config)# show vlan brief | include 400
+--------------------------^
+syntax error: expecting 
+  configuration      - Show a parameter
+  full-configuration - Show a parameter
+  history            - Display CLI command history
+  parser             - Display parser information
+BR3-cEdge-1(config)# 
+INFO:root:VLAN 400 already exists on BR3-vEdge-1.
+INFO:root:Connecting to xDomain-Router at 192.168.0.90
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:xDomain-Router is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on xDomain-Router: show vlan brief | include 400
+INFO:root:VLAN check output for xDomain-Router: enable
+xDomain-Router#show version
+Cisco IOS XE Software, Version 17.06.05
+Cisco IOS Software [Bengaluru], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.6.5, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2023 by Cisco Systems, Inc.
+Compiled Wed 25-Jan-23 16:07 by mcpre
+
+
+Cisco IOS-XE software, Copyright (c) 2005-2023 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+
+
+ROM: IOS-XE ROMMON
+
+xDomain-Router uptime is 4 hours, 28 minutes
+Uptime for this control processor is 4 hours, 29 minutes
+ --More--         System returned to ROM by reload
+System image file is "bootflash:packages.conf"
+Last reload reason: reload
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+License Level: network-advantage
+License Type: Perpetual
+ --More--         Next reload license Level: network-advantage
+
+Addon License Level: dna-advantage
+Addon License Type: Subscription
+Next reload addon license Level: dna-advantage
+
+The current throughput level is 10000 kbps 
+
+
+Smart Licensing Status: Registration Not Applicable/Not Applicable
+
+cisco C8000V (VXE) processor (revision VXE) with 2257251K/3075K bytes of memory.
+Processor board ID 950O1U0WCKJ
+Router operating mode: Autonomous
+8 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+16332508K bytes of physical memory.
+11526144K bytes of virtual hard disk at bootflash:.
+
+Configuration register is 0x2102
+
+xDomain-Router#config-transaction
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+xDomain-Router#show vlan 
+INFO:root:VLAN 400 does not exist on xDomain-Router. Creating VLAN.
+INFO:root:Running trunk port update command on xDomain-Router: interface GigabitEthernet1/0/1
+switchport trunk allowed vlan add 400
+ERROR:root:Error configuring VLAN on xDomain-Router: Socket is closed
+INFO:root:Connecting to CL1-Core-1 at 192.168.0.91
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:CL1-Core-1 is not in Controller mode, using config-transaction.
+INFO:root:Running VLAN check command on CL1-Core-1: show vlan brief | include 400
