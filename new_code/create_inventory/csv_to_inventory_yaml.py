@@ -55,8 +55,8 @@ def csv_to_grouped_yaml(csv_file, yaml_file):
         yaml.dump(inventory, file, default_flow_style=False)
 
 # Example usage
-csv_file = 'inventory_sandbox_devices.csv'  # Input CSV file
-yaml_file = 'grouped_inventory.yaml'  # Output YAML file
+csv_file = 'inventory_devices.csv'  # Input CSV file
+yaml_file = 'inventory.yaml'  # Output YAML file
 
 # Convert CSV to grouped YAML
 csv_to_grouped_yaml(csv_file, yaml_file)

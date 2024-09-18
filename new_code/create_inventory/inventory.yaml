@@ -1,0 +1,375 @@
+http_devices:
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.20
+    method: HTTP
+    password: n/a
+    username: n/a
+  hostname: TJ-INET
+  roles: inet_router
+  site: Colocation1
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.21
+    method: HTTP
+    password: n/a
+    username: n/a
+  hostname: TJ-MPLS
+  roles: mpls_router
+  site: Colocation2
+networking_devices:
+- commands:
+  - show sdwan control connections
+  config_commands:
+  - sdwan config
+  connection_details:
+    host: 192.168.0.50
+    method: HTTPS
+    password: Labpass01!
+    username: labuser
+  hostname: vManage-1
+  roles: vmanage
+  site: Colocation1
+- commands:
+  - show sdwan control connections
+  config_commands:
+  - sdwan config
+  connection_details:
+    host: 192.168.0.52
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: vSmart-1
+  roles: vsmart
+  site: Colocation1
+- commands:
+  - show sdwan control connections
+  config_commands:
+  - sdwan config
+  connection_details:
+    host: 192.168.0.53
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: vSmart-2
+  roles: vsmart
+  site: Colocation2
+- commands:
+  - show sdwan control connections
+  config_commands:
+  - sdwan config
+  connection_details:
+    host: 192.168.0.54
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: vBond-1
+  roles: vbond
+  site: Colocation1
+- commands:
+  - show sdwan control connections
+  config_commands:
+  - sdwan config
+  connection_details:
+    host: 192.168.0.55
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: vBond-2
+  roles: vbond
+  site: Colocation2
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.70
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL1-cEdge-1
+  roles: cedge
+  site: Branch1
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.71
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL1-cEdge-2
+  roles: cedge
+  site: Branch2
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.72
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: BR1-cEdge-1
+  roles: cedge
+  site: Branch1
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.73
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: BR1-cEdge-2
+  roles: cedge
+  site: Branch2
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.74
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: BR2-cEdge-1
+  roles: cedge
+  site: Branch3
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.80
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL2-vEdge-1
+  roles: vedge
+  site: Branch4
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.81
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: BR3-vEdge-1
+  roles: vedge
+  site: Branch5
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.90
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: xDomain-Router
+  roles: router
+  site: Colocation1
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.91
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL1-Core-1
+  roles: core
+  site: Branch1
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.92
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL2-Core-1
+  roles: core
+  site: Branch2
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.93
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: CL2-Hub-1
+  roles: hub
+  site: Branch3
+- commands:
+  - show running-config
+  config_commands:
+  - vlan 400
+  connection_details:
+    host: 192.168.0.94
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: BR4-Spoke1
+  roles: spoke
+  site: Branch4
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.19
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: Cloud-Ubuntu
+  roles: cloud_ubuntu
+  site: Colocation1
+- commands:
+  - n/a
+  config_commands:
+  - systemctl restart network
+  connection_details:
+    host: 192.168.1.19
+    method: HTTPS
+    password: Labpass01!
+    username: labuser
+  hostname: Ansible-Tower
+  roles: ansible_tower
+  site: Branch7
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.20
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  hostname: Partner-Ubuntu
+  roles: partner_ubuntu
+  site: Branch7
+server_devices:
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.10
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR1-PC-Corp
+  roles: corp_pc
+  site: Branch1
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.11
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR1-PC-Partner
+  roles: partner_pc
+  site: Branch2
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.12
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR1-PC-Guest
+  roles: guest_pc
+  site: Branch3
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.13
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR2-PC-Corp
+  roles: corp_pc
+  site: Branch1
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.14
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR2-PC-Partner
+  roles: partner_pc
+  site: Branch2
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.15
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR2-PC-Guest
+  roles: guest_pc
+  site: Branch3
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.16
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR3-PC-Corp
+  roles: corp_pc
+  site: Branch4
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.17
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: BR4-PC-Corp
+  roles: corp_pc
+  site: Branch5
+- commands:
+  - n/a
+  config_commands:
+  - n/a
+  connection_details:
+    host: 192.168.1.18
+    method: RDP
+    password: Labpass01!
+    username: labuser
+  hostname: DC1-PC-Corp
+  roles: corp_pc
+  site: Branch6
