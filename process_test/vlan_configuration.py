@@ -6,6 +6,13 @@ import time
 # Set up logging
 logging.basicConfig(filename='vlan_configuration.log', level=logging.INFO)
 
+def send_command(shell, command, sleep=1):
+    """Send a command to the device and flush the buffer."""
+    shell.send(command + '\n')
+    time.sleep(sleep)
+    output = shell.recv(65535).decode("utf-8")
+    return output
+
 def configure_vlan(device, vlan_id=400):
     logging.info(f"Connecting to {device['hostname']} at {device['connection_details']['host']}")
     
@@ -22,58 +29,49 @@ def configure_vlan(device, vlan_id=400):
             remote_conn = ssh.invoke_shell()
             time.sleep(1)  # Give the shell time to initialize
 
+            # Flush the shell buffer
+            remote_conn.recv(65535).decode("utf-8")
+
             # Determine whether the device is in Controller mode
-            remote_conn.send("enable\n")
-            time.sleep(1)
-            remote_conn.send("show version\n")
-            time.sleep(2)
-            version_output = remote_conn.recv(65535).decode("utf-8")
-            
-            if "Controller mode" in version_output:
-                # Controller mode device, use config-transaction
+            output = send_command(remote_conn, "enable", 1)
+            output += send_command(remote_conn, "show version", 1)
+
+            if "Controller mode" in output:
                 logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
-                remote_conn.send("config-transaction\n")
+                output += send_command(remote_conn, "config-transaction", 1)
             else:
-                # Traditional device, use configure terminal
                 logging.info(f"{device['hostname']} is not in Controller mode, using configure terminal.")
-                remote_conn.send("configure terminal\n")
-            time.sleep(1)
+                output += send_command(remote_conn, "configure terminal", 1)
 
             # Check if VLAN exists
-            check_vlan_command = f"show vlan brief | include {vlan_id}\n"
+            check_vlan_command = f"show vlan brief | include {vlan_id}"
             logging.info(f"Running VLAN check command on {device['hostname']}: {check_vlan_command}")
-            remote_conn.send(check_vlan_command)
-            time.sleep(2)
-            
-            output = remote_conn.recv(65535).decode("utf-8")
+            output += send_command(remote_conn, check_vlan_command, 2)
             logging.info(f"VLAN check output for {device['hostname']}: {output}")
-            
+
             if str(vlan_id) in output:
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
             else:
                 logging.info(f"VLAN {vlan_id} does not exist on {device['hostname']}. Creating VLAN.")
                 
                 # Create VLAN
-                remote_conn.send(f"vlan {vlan_id}\n")
-                time.sleep(1)
-                remote_conn.send("exit\n")
-                time.sleep(1)
+                output += send_command(remote_conn, f"vlan {vlan_id}", 1)
+                output += send_command(remote_conn, "exit", 1)
 
                 # Update trunk ports (this is a simplified example)
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:  # Adjust based on your network
-                    trunk_command = f"interface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\n"
+                    trunk_command = f"interface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}"
                     logging.info(f"Running trunk port update command on {device['hostname']}: {trunk_command}")
-                    remote_conn.send(trunk_command)
-                    time.sleep(1)
+                    output += send_command(remote_conn, trunk_command, 1)
+                    output += send_command(remote_conn, "exit", 1)
 
                 logging.info(f"VLAN {vlan_id} and trunk configuration completed on {device['hostname']}.")
 
             # Exit configuration mode or commit transaction
-            if "Controller mode" in version_output:
-                remote_conn.send("commit\n")
+            if "Controller mode" in output:
+                output += send_command(remote_conn, "commit", 1)
             else:
-                remote_conn.send("end\n")
-            time.sleep(1)
+                output += send_command(remote_conn, "end", 1)
             ssh.close()
 
     except Exception as e:
