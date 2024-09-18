@@ -41,19 +41,16 @@ def configure_vlan(device, vlan_id=400):
             # Flush the shell buffer
             remote_conn.recv(65535).decode("utf-8")
 
-            # Determine whether the device is in Controller mode
-            output = send_command(remote_conn, "enable", 1)
-            output += send_command(remote_conn, "show version", 1)
-
             # Check if VLAN exists before entering config-transaction mode
             check_vlan_command = f"show vlan brief | include {vlan_id}"
             logging.info(f"Running VLAN check command on {device['hostname']}: {check_vlan_command}")
             vlan_check_output = send_command(remote_conn, check_vlan_command, 2)
 
             if str(vlan_id) in vlan_check_output:
-                logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
+                logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}. Skipping configuration.")
             else:
                 # If VLAN does not exist, enter configuration mode or config-transaction mode
+                output = send_command(remote_conn, "show version", 1)
                 if "Controller mode" in output:
                     logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
                     send_command(remote_conn, "config-transaction", 1)
