@@ -1,52 +1,44 @@
 import csv
 import yaml
 
-# Function to convert CSV to YAML inventory format
-def csv_to_yaml(csv_file, yaml_file):
-    inventory = {"devices": []}  # Define the structure for the inventory
+def csv_to_grouped_yaml(csv_file, yaml_file):
+    inventory = {
+        "networking_devices_for_vlan_changes": [],
+        "http_devices": [],
+        "servers": []
+    }
 
     with open(csv_file, mode='r') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
-            connection_details = row['connection_details'].split(", ")
-
-            # Initialize default values for connection details
-            host, method, username, password = "N/A", "N/A", "N/A", "N/A"
-
-            # Parse connection details and handle missing values
-            for detail in connection_details:
-                if "host" in detail:
-                    host = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
-                elif "method" in detail:
-                    method = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
-                elif "username" in detail:
-                    username = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
-                elif "password" in detail:
-                    password = detail.split(": ")[1] if len(detail.split(": ")) > 1 else "N/A"
-
-            # Build device entry
             device = {
                 "hostname": row['hostname'],
                 "site": row['site'],
                 "roles": row['roles'],
-                "commands": row['commands'].split(";"),  # Split commands if multiple commands are separated by semicolons
-                "config_commands": row['config_commands'].split(";"),
+                "commands": row['commands'],
+                "config_commands": row['config_commands'],
                 "connection_details": {
-                    "host": host,
-                    "method": method,
-                    "username": username,
-                    "password": password
+                    "host": row['connection_details'].split(", ")[0].split(": ")[1],
+                    "method": row['connection_details'].split(", ")[1].split(": ")[1],
+                    "username": row['connection_details'].split(", ")[2].split(": ")[1],
+                    "password": row['connection_details'].split(", ")[3].split(": ")[1]
                 }
             }
-            inventory["devices"].append(device)
+
+            # Classify devices based on their roles and connection methods
+            if "cedge" in row['roles'] or "vedge" in row['roles'] or "core" in row['roles'] or "router" in row['roles']:
+                inventory["networking_devices_for_vlan_changes"].append(device)
+            elif "HTTP" in row['connection_details'] or "HTTPS" in row['connection_details']:
+                inventory["http_devices"].append(device)
+            else:
+                inventory["servers"].append(device)
 
     # Write the dictionary to a YAML file
     with open(yaml_file, 'w') as file:
         yaml.dump(inventory, file, default_flow_style=False)
 
 # Example usage
-csv_file = 'inventory_sandbox_devices.csv'  # Input CSV file with device information
-yaml_file = 'inventory.yaml'  # Output YAML file
+csv_file = 'inventory_devices.csv'  # Input CSV file with device information
+yaml_file = 'grouped_inventory.yaml'  # Output YAML file
 
-# Convert the CSV to YAML
-csv_to_yaml(csv_file, yaml_file)
+csv_to_grouped_yaml(csv_file, yaml_file)
