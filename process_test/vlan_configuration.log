@@ -1,0 +1,50 @@
+INFO:root:Connecting to CL1-cEdge-1 at 192.168.0.70
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-cEdge-1. Skipping configuration.
+INFO:root:Connecting to CL1-cEdge-2 at 192.168.0.71
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-cEdge-2. Skipping configuration.
+INFO:root:Connecting to BR1-cEdge-1 at 192.168.0.72
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR1-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR1-cEdge-1. Skipping configuration.
+INFO:root:Connecting to BR1-cEdge-2 at 192.168.0.73
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR1-cEdge-2: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR1-cEdge-2. Skipping configuration.
+INFO:root:Connecting to BR2-cEdge-1 at 192.168.0.74
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR2-cEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR2-cEdge-1. Skipping configuration.
+INFO:root:Connecting to CL2-vEdge-1 at 192.168.0.80
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL2-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL2-vEdge-1. Skipping configuration.
+INFO:root:Connecting to BR3-vEdge-1 at 192.168.0.81
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on BR3-vEdge-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on BR3-vEdge-1. Skipping configuration.
+INFO:root:Connecting to xDomain-Router at 192.168.0.90
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on xDomain-Router: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on xDomain-Router. Skipping configuration.
+INFO:root:Connecting to CL1-Core-1 at 192.168.0.91
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL1-Core-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL1-Core-1. Skipping configuration.
+INFO:root:Connecting to CL2-Core-1 at 192.168.0.92
+INFO:paramiko.transport:Connected (version 2.0, client Cisco-1.25)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:Running VLAN check command on CL2-Core-1: show vlan brief | include 400
+INFO:root:VLAN 400 already exists on CL2-Core-1. Skipping configuration.
