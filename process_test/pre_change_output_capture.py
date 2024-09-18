@@ -43,12 +43,12 @@ def capture_pre_change_output(device, output_dir):
         logging.error(f"Error capturing config from {device['hostname']}: {str(e)}")
 
 # Load inventory from YAML file
-with open('inventory.yaml', 'r') as file:
+with open('grouped_inventory.yaml', 'r') as file:
     inventory = yaml.safe_load(file)
 
 # Define output directory
 output_dir = 'pre_change_output'
 
-# Capture pre-change configuration for all devices
-for device in inventory['devices']:
+# Capture pre-change configuration only for networking devices
+for device in inventory['networking_devices_for_vlan_changes']:
     capture_pre_change_output(device, output_dir)
