@@ -56,20 +56,23 @@ def configure_vlan(device, vlan_id=400):
 
             if str(vlan_id) in vlan_check_output:
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
-                # Check detailed VLAN configuration
-                detailed_check_command = f"show running-config | section vlan {vlan_id}"
-                detailed_vlan_config = send_command(remote_conn, detailed_check_command, 2)
-                logging.info(f"Detailed VLAN {vlan_id} configuration on {device['hostname']}: {detailed_vlan_config}")
+
+                # **New Addition: Detailed VLAN Configuration and Trunk Port Check**
+                detailed_vlan_config_command = f"show running-config | section vlan {vlan_id}"
+                detailed_vlan_config_output = send_command(remote_conn, detailed_vlan_config_command, 2)
+                logging.info(f"Detailed VLAN {vlan_id} configuration on {device['hostname']}: {detailed_vlan_config_output}")
 
                 # Check if specific trunk ports allow the VLAN
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:
-                    trunk_check_command = f"show running-config interface {trunk_port} | include allowed vlan"
-                    trunk_config = send_command(remote_conn, trunk_check_command, 1)
+                    trunk_check_command = f"show interfaces {trunk_port} switchport"
+                    trunk_config = send_command(remote_conn, trunk_check_command, 2)
                     logging.info(f"Trunk port {trunk_port} VLAN config on {device['hostname']}: {trunk_config}")
-                    if f"allowed vlan {vlan_id}" in trunk_config:
+                    
+                    if f"VLANs allowed on trunk: {vlan_id}" in trunk_config:
                         logging.info(f"Trunk port {trunk_port} allows VLAN {vlan_id} on {device['hostname']}.")
                     else:
                         logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
+
             else:
                 # If VLAN does not exist, enter configuration mode or config-transaction mode
                 output = send_command(remote_conn, "enable", 1)
