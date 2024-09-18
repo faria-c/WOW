@@ -12,14 +12,13 @@ def csv_to_yaml(csv_file, yaml_file):
                 "hostname": row['hostname'],
                 "site": row['site'],
                 "roles": row['roles'],
-                "commands": row['commands'].split(";"),  # If multiple commands, separate by ";"
+                "commands": row['commands'].split(";"),  # Split commands if multiple commands are separated by semicolons
                 "config_commands": row['config_commands'].split(";"),
                 "connection_details": {
                     "host": row['connection_details'].split(", ")[0].split(": ")[1],
-                    "auth_username": row['connection_details'].split(", ")[1].split(": ")[1],
-                    "auth_password": row['connection_details'].split(", ")[2].split(": ")[1],
-                    "auth_strict_key": row['connection_details'].split(", ")[3].split(": ")[1],
-                    "platform": row['connection_details'].split(", ")[4].split(": ")[1]
+                    "method": row['connection_details'].split(", ")[1].split(": ")[1],
+                    "username": row['connection_details'].split(", ")[2].split(": ")[1],
+                    "password": row['connection_details'].split(", ")[3].split(": ")[1]
                 }
             }
             inventory["devices"].append(device)
@@ -29,7 +28,8 @@ def csv_to_yaml(csv_file, yaml_file):
         yaml.dump(inventory, file, default_flow_style=False)
 
 # Example usage
-csv_file = 'inventory_config_push.csv'  # CSV file with the device information
+csv_file = 'inventory_sandbox_devices.csv'  # Input CSV file with device information
 yaml_file = 'inventory.yaml'  # Output YAML file
 
+# Convert the CSV to YAML
 csv_to_yaml(csv_file, yaml_file)
