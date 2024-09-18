@@ -1,0 +1,10 @@
+INFO:root:Validating configuration for BR1-cEdge-1
+ERROR:root:Pre or post change file not found for BR1-cEdge-1.
+INFO:root:Validating configuration for BR1-cEdge-2
+ERROR:root:Pre or post change file not found for BR1-cEdge-2.
+INFO:root:Validating configuration for BR2-cEdge-1
+ERROR:root:Pre or post change file not found for BR2-cEdge-1.
+INFO:root:Validating configuration for BR3-vEdge-1
+ERROR:root:Pre or post change file not found for BR3-vEdge-1.
+INFO:root:Validating configuration for BR4-Spoke1
+ERROR:root:Pre or post change file not found for BR4-Spoke1.
