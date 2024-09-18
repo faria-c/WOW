@@ -809,3 +809,6 @@ CL2-Core-1#config-transaction
 % Bad IP address or host name% Unknown command or computer name, or unable to find computer address
 CL2-Core-1#s
 INFO:root:VLAN 400 does not exist on CL2-Core-1. Creating VLAN.
+INFO:root:Running trunk port update command on CL2-Core-1: interface GigabitEthernet1/0/1
+switchport trunk allowed vlan add 400
+ERROR:root:Error configuring VLAN on CL2-Core-1: Socket is closed
