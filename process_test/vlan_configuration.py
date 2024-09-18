@@ -22,17 +22,28 @@ def configure_vlan(device, vlan_id=400):
             remote_conn = ssh.invoke_shell()
             time.sleep(1)  # Give the shell time to initialize
 
-            # Enter enable mode if required
+            # Determine whether the device is in Controller mode
             remote_conn.send("enable\n")
             time.sleep(1)
-            remote_conn.send("configure terminal\n")
+            remote_conn.send("show version\n")
+            time.sleep(2)
+            version_output = remote_conn.recv(65535).decode("utf-8")
+            
+            if "Controller mode" in version_output:
+                # Controller mode device, use config-transaction
+                logging.info(f"{device['hostname']} is in Controller mode, using config-transaction.")
+                remote_conn.send("config-transaction\n")
+            else:
+                # Traditional device, use configure terminal
+                logging.info(f"{device['hostname']} is not in Controller mode, using configure terminal.")
+                remote_conn.send("configure terminal\n")
             time.sleep(1)
 
             # Check if VLAN exists
             check_vlan_command = f"show vlan brief | include {vlan_id}\n"
             logging.info(f"Running VLAN check command on {device['hostname']}: {check_vlan_command}")
             remote_conn.send(check_vlan_command)
-            time.sleep(2)  # Wait for the command to execute
+            time.sleep(2)
             
             output = remote_conn.recv(65535).decode("utf-8")
             logging.info(f"VLAN check output for {device['hostname']}: {output}")
@@ -57,8 +68,11 @@ def configure_vlan(device, vlan_id=400):
 
                 logging.info(f"VLAN {vlan_id} and trunk configuration completed on {device['hostname']}.")
 
-            # Exit configuration mode
-            remote_conn.send("end\n")
+            # Exit configuration mode or commit transaction
+            if "Controller mode" in version_output:
+                remote_conn.send("commit\n")
+            else:
+                remote_conn.send("end\n")
             time.sleep(1)
             ssh.close()
 
