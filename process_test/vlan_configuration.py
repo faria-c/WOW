@@ -8,19 +8,22 @@ logging.basicConfig(filename='vlan_configuration.log', level=logging.INFO)
 
 def send_command(shell, command, sleep=1):
     """Send a command to the device, handle --More-- prompts, and flush the buffer."""
-    shell.send(command + '\n')
-    time.sleep(sleep)
-    output = ""
-    
-    while True:
-        if shell.recv_ready():
-            chunk = shell.recv(65535).decode("utf-8")
-            output += chunk
-            if "--More--" in chunk:
-                shell.send(" ")  # Send space to continue
-            else:
-                break
-    return output
+    try:
+        shell.send(command + '\n')
+        time.sleep(sleep)
+        output = ""
+        while True:
+            if shell.recv_ready():
+                chunk = shell.recv(65535).decode("utf-8")
+                output += chunk
+                if "--More--" in chunk:
+                    shell.send(" ")  # Send space to continue
+                else:
+                    break
+        return output
+    except Exception as e:
+        logging.error(f"Failed to send command: {command}. Error: {str(e)}")
+        return None
 
 def configure_vlan(device, vlan_id=400):
     logging.info(f"Connecting to {device['hostname']} at {device['connection_details']['host']}")
@@ -58,13 +61,13 @@ def configure_vlan(device, vlan_id=400):
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
 
                 # **New Addition: Detailed VLAN Configuration and Trunk Port Check**
-                detailed_vlan_config_command = f"show running-config | section vlan {vlan_id}"
+                detailed_vlan_config_command = f"show run | section vlan {vlan_id}"
                 detailed_vlan_config_output = send_command(remote_conn, detailed_vlan_config_command, 2)
                 logging.info(f"Detailed VLAN {vlan_id} configuration on {device['hostname']}: {detailed_vlan_config_output}")
 
                 # Check if specific trunk ports allow the VLAN using running-config
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:
-                    trunk_check_command = f"show running-config interface {trunk_port}"
+                    trunk_check_command = f"show interface {trunk_port} switchport"
                     trunk_config = send_command(remote_conn, trunk_check_command, 2)
                     logging.info(f"Trunk port {trunk_port} config on {device['hostname']}: {trunk_config}")
                     
@@ -74,7 +77,8 @@ def configure_vlan(device, vlan_id=400):
                         logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
                         # Adding VLAN to trunk port
                         logging.info(f"Adding VLAN {vlan_id} to trunk port {trunk_port} on {device['hostname']}.")
-                        send_command(remote_conn, f"configure terminal\ninterface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\nend", 1)
+                        add_vlan_command = f"configure terminal\ninterface {trunk_port}\nswitchport trunk allowed vlan add {vlan_id}\nexit\nend"
+                        send_command(remote_conn, add_vlan_command, 1)
 
             else:
                 # If VLAN does not exist, enter configuration mode or config-transaction mode
