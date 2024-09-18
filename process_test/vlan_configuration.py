@@ -1,3 +1,27 @@
+import paramiko
+import yaml
+import logging
+import time
+
+# Set up logging
+logging.basicConfig(filename='vlan_configuration.log', level=logging.INFO)
+
+def send_command(shell, command, sleep=1):
+    """Send a command to the device, handle --More-- prompts, and flush the buffer."""
+    shell.send(command + '\n')
+    time.sleep(sleep)
+    output = ""
+    
+    while True:
+        if shell.recv_ready():
+            chunk = shell.recv(65535).decode("utf-8")
+            output += chunk
+            if "--More--" in chunk:
+                shell.send(" ")  # Send space to continue
+            else:
+                break
+    return output
+
 def configure_vlan(device, vlan_id=400):
     logging.info(f"Connecting to {device['hostname']} at {device['connection_details']['host']}")
     
@@ -32,14 +56,17 @@ def configure_vlan(device, vlan_id=400):
 
             if str(vlan_id) in vlan_check_output:
                 logging.info(f"VLAN {vlan_id} already exists on {device['hostname']}.")
+                # Check detailed VLAN configuration
+                detailed_check_command = f"show running-config | section vlan {vlan_id}"
+                detailed_vlan_config = send_command(remote_conn, detailed_check_command, 2)
+                logging.info(f"Detailed VLAN {vlan_id} configuration on {device['hostname']}: {detailed_vlan_config}")
 
                 # Check if specific trunk ports allow the VLAN
                 for trunk_port in ["GigabitEthernet1/0/1", "GigabitEthernet1/0/2"]:
-                    trunk_check_command = f"show interfaces {trunk_port} switchport"
-                    trunk_config = send_command(remote_conn, trunk_check_command, 2)
+                    trunk_check_command = f"show running-config interface {trunk_port} | include allowed vlan"
+                    trunk_config = send_command(remote_conn, trunk_check_command, 1)
                     logging.info(f"Trunk port {trunk_port} VLAN config on {device['hostname']}: {trunk_config}")
-                    
-                    if f"VLANs allowed on trunk: {vlan_id}" in trunk_config:
+                    if f"allowed vlan {vlan_id}" in trunk_config:
                         logging.info(f"Trunk port {trunk_port} allows VLAN {vlan_id} on {device['hostname']}.")
                     else:
                         logging.warning(f"Trunk port {trunk_port} does not allow VLAN {vlan_id} on {device['hostname']}.")
@@ -80,3 +107,11 @@ def configure_vlan(device, vlan_id=400):
 
     except Exception as e:
         logging.error(f"Error configuring VLAN on {device['hostname']}: {str(e)}")
+
+# Load inventory from YAML file
+with open('inventory.yaml', 'r') as file:
+    inventory = yaml.safe_load(file)
+
+# Configure VLAN for networking devices only
+for device in inventory.get('networking_devices_for_vlan_changes', []):
+    configure_vlan(device)
