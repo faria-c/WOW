@@ -14,19 +14,21 @@ def create_inventory_from_csv(csv_file, yaml_file):
                 'hostname': row['Device Name'],
                 'device_type': row['Device Type'],
                 'connection_details': {
-                    'host': row['Device Name'],
+                    'host': row['Management IP'],  # Use the Management IP from the CSV
                     'username': row['Username'],
                     'password': row['Password'],
-                    'method': 'SSH' if row['Device Type'] != 'vManage' else 'HTTPS',
+                    'method': row['Method(s)'],  # Use the method(s) from the CSV (SSH or HTTPS)
                 }
             }
+            
+            # Handle SD-WAN specific variables, if applicable
             if row['Device Type'] == 'SD-WAN Device':
-                device['sd_wan_var'] = row['sd-wan var']
-                device['sd_wan_var_value'] = row['sd-wan var value']
+                device['sd_wan_var'] = row.get('sd-wan var', 'N/A')  # Use 'N/A' if no value
+                device['sd_wan_var_value'] = row.get('sd-wan var value', 'N/A')  # Use 'N/A' if no value
 
             inventory['networking_devices_for_vlan_changes'].append(device)
 
-    # Write inventory.yaml
+    # Write the inventory.yaml file
     with open(yaml_file, 'w') as yamlfile:
         yaml.dump(inventory, yamlfile, default_flow_style=False)
 
