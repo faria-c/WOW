@@ -1,0 +1,18 @@
+Site Name,Device Name,Device Type,Username,Password,sd-wan var,sd-wan var value
+Colocation Site 1,CL1-Core-1,Core Switch,labuser,Labpass01!,N/A,N/A
+Colocation Site 1,CL1-cEdge-1,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Colocation Site 1,CL1-cEdge-2,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Colocation Site 2,CL2-Core-1,Core Switch,labuser,Labpass01!,N/A,N/A
+Colocation Site 2,CL2-vEdge-1,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Colocation Site 2,CL2-Hub-1,Hub Switch,labuser,Labpass01!,N/A,N/A
+Branch 1,BR1-cEdge-1,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Branch 1,BR1-cEdge-2,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Branch 2,BR2-cEdge-1,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Branch 3,BR3-vEdge-1,SD-WAN Device,labuser,Labpass01!,N/A,N/A
+Branch 4,BR4-Spoke1,Spoke Device,labuser,Labpass01!,N/A,N/A
+SD-WAN Cloud 1,vSmart-1,vSmart,labuser,Labpass01!,N/A,N/A
+SD-WAN Cloud 1,vSmart-2,vSmart,labuser,Labpass01!,N/A,N/A
+SD-WAN Cloud 1,vBond-1,vBond,labuser,Labpass01!,N/A,N/A
+SD-WAN Cloud 2,vBond-2,vBond,labuser,Labpass01!,N/A,N/A
+SD-WAN Cloud 1,vManage-1,vManage,labuser,Labpass01!,N/A,N/A
+N/A,xDomain-Router,Router,labuser,Labpass01!,N/A,N/A

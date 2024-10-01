@@ -1,0 +1,151 @@
+networking_devices_for_vlan_changes:
+- connection_details:
+    host: CL1-Core-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: Core Switch
+  hostname: CL1-Core-1
+  site: Colocation Site 1
+- connection_details:
+    host: CL1-cEdge-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: CL1-cEdge-1
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Colocation Site 1
+- connection_details:
+    host: CL1-cEdge-2
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: CL1-cEdge-2
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Colocation Site 1
+- connection_details:
+    host: CL2-Core-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: Core Switch
+  hostname: CL2-Core-1
+  site: Colocation Site 2
+- connection_details:
+    host: CL2-vEdge-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: CL2-vEdge-1
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Colocation Site 2
+- connection_details:
+    host: CL2-Hub-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: Hub Switch
+  hostname: CL2-Hub-1
+  site: Colocation Site 2
+- connection_details:
+    host: BR1-cEdge-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: BR1-cEdge-1
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Branch 1
+- connection_details:
+    host: BR1-cEdge-2
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: BR1-cEdge-2
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Branch 1
+- connection_details:
+    host: BR2-cEdge-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: BR2-cEdge-1
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Branch 2
+- connection_details:
+    host: BR3-vEdge-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: SD-WAN Device
+  hostname: BR3-vEdge-1
+  sd_wan_var: N/A
+  sd_wan_var_value: N/A
+  site: Branch 3
+- connection_details:
+    host: BR4-Spoke1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: Spoke Device
+  hostname: BR4-Spoke1
+  site: Branch 4
+- connection_details:
+    host: vSmart-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: vSmart
+  hostname: vSmart-1
+  site: SD-WAN Cloud 1
+- connection_details:
+    host: vSmart-2
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: vSmart
+  hostname: vSmart-2
+  site: SD-WAN Cloud 1
+- connection_details:
+    host: vBond-1
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: vBond
+  hostname: vBond-1
+  site: SD-WAN Cloud 1
+- connection_details:
+    host: vBond-2
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: vBond
+  hostname: vBond-2
+  site: SD-WAN Cloud 2
+- connection_details:
+    host: vManage-1
+    method: HTTPS
+    password: Labpass01!
+    username: labuser
+  device_type: vManage
+  hostname: vManage-1
+  site: SD-WAN Cloud 1
+- connection_details:
+    host: xDomain-Router
+    method: SSH
+    password: Labpass01!
+    username: labuser
+  device_type: Router
+  hostname: xDomain-Router
+  site: N/A
