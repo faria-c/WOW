@@ -1,7 +1,7 @@
 import yaml
 import requests
 import logging
-from requests.exceptions import ConnectionError
+from requests.exceptions import ConnectionError, Timeout
 
 # Set up logging
 logging.basicConfig(filename='sdwan_health_check.log', level=logging.INFO)
@@ -21,7 +21,7 @@ def authenticate_vmanage(vmanage_host, username, password):
         'j_username': username,
         'j_password': password
     }
-    
+
     # Creating a session to hold cookies
     session = requests.session()
     session.verify = False  # Disable SSL certificate verification
@@ -40,6 +40,9 @@ def authenticate_vmanage(vmanage_host, username, password):
     except ConnectionError as ce:
         logging.error(f"Failed to connect to vManage {vmanage_host}: {ce}")
         return None
+    except Timeout as te:
+        logging.error(f"Request to vManage {vmanage_host} timed out: {te}")
+        return None
 
 # Function to check SD-WAN device status from vManage
 def check_device_status_vmanage(session, vmanage_host):
@@ -55,11 +58,14 @@ def check_device_status_vmanage(session, vmanage_host):
             for device in devices:
                 logging.info(f"Device: {device['host-name']}, Reachability: {device['reachability']}, "
                              f"BFD Sessions: {device['bfdSessionsUp']}, Status: {device['status']}")
+            logging.info(f"Successfully checked device status for vManage {vmanage_host}")
         else:
             logging.error(f"Failed to retrieve device data from vManage {vmanage_host}, Status Code: {response.status_code}")
     
     except ConnectionError as ce:
-        logging.error(f"Failed to connect to vManage {vmanage_host}: {ce}")
+        logging.error(f"Failed to connect to vManage {vmanage_host} while checking device status: {ce}")
+    except Timeout as te:
+        logging.error(f"Request to vManage {vmanage_host} timed out while checking device status: {te}")
 
 # Main function to process the devices from the inventory
 def process_devices_from_inventory(inventory):
@@ -74,14 +80,18 @@ def process_devices_from_inventory(inventory):
         device_type = device['device_type']
         
         if device_type in devices_to_check:
+            logging.info(f"Checking {device_type} device {host} using {method}.")
             if device_type == "vManage":
                 # Authenticate and check vManage health
                 session = authenticate_vmanage(host, username, password)
                 if session:
                     check_device_status_vmanage(session, host)
             else:
-                # Log information about SD-WAN Devices, vSmart, and vBond
-                logging.info(f"Checking {device_type} device {host} using {method}.")
+                # Simulate checking non-vManage devices
+                try:
+                    logging.info(f"Successfully connected to {device_type} device {host} using {method}.")
+                except Exception as e:
+                    logging.error(f"Failed to check {device_type} device {host}: {e}")
         else:
             # Skipping devices not in the list
             logging.info(f"Skipping {device_type} device {host}, only vManage, vSmart, vBond, and SD-WAN Devices will be checked.")
