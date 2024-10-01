@@ -63,20 +63,28 @@ def check_device_status_vmanage(session, vmanage_host):
 
 # Main function to process the devices from the inventory
 def process_devices_from_inventory(inventory):
+    # Define the devices that should be checked
+    devices_to_check = ['vSmart', 'vBond', 'SD-WAN Device']
+
     for device in inventory['networking_devices_for_vlan_changes']:
-        host = device['connection_details']['host']
+        host = device['connection_details']['host']  # Management IP
         method = device['connection_details']['method']
         username = device['connection_details']['username']
         password = device['connection_details']['password']
         device_type = device['device_type']
         
-        if device_type == "vManage":
-            # Authenticate and check vManage health
-            session = authenticate_vmanage(host, username, password)
-            if session:
-                check_device_status_vmanage(session, host)
+        if device_type in devices_to_check:
+            if device_type == "vManage":
+                # Authenticate and check vManage health
+                session = authenticate_vmanage(host, username, password)
+                if session:
+                    check_device_status_vmanage(session, host)
+            else:
+                # Log information about SD-WAN Devices, vSmart, and vBond
+                logging.info(f"Checking {device_type} device {host} using {method}.")
         else:
-            logging.info(f"Skipping {device_type} device {host}, only vManage will be checked using API.")
+            # Skipping devices not in the list
+            logging.info(f"Skipping {device_type} device {host}, only vManage, vSmart, vBond, and SD-WAN Devices will be checked.")
 
 # Load inventory and run the process
 inventory = read_inventory('inventory.yaml')
