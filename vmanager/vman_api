@@ -1,7 +1,11 @@
 import yaml
 import requests
 import logging
+import urllib3
 from requests.exceptions import ConnectionError, Timeout
+
+# Suppress the InsecureRequestWarning
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Set up logging
 logging.basicConfig(filename='sdwan_health_check.log', level=logging.INFO)
