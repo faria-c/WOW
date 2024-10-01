@@ -7,24 +7,29 @@ def create_inventory_from_csv(csv_file, yaml_file):
 
     with open(csv_file, 'r') as csvfile:
         reader = csv.DictReader(csvfile)
-        
+
         for row in reader:
+            # Split method(s) by comma and take the first method
+            methods = row['Method(s)'].split(',')  # Split by comma
+            primary_method = methods[0].strip()  # Take the first method and strip any extra spaces
+
+            # Create the device entry with proper field mappings
             device = {
                 'site': row['Site Name'],
                 'hostname': row['Device Name'],
                 'device_type': row['Device Type'],
                 'connection_details': {
                     'host': row['Management IP'],  # Use the Management IP from the CSV
-                    'username': row['Username'],
-                    'password': row['Password'],
-                    'method': row['Method(s)'],  # Use the method(s) from the CSV (SSH or HTTPS)
+                    'username': row['Username'].strip(),  # Ensure any leading/trailing spaces are removed
+                    'password': row['Password'].strip(),  # Ensure any leading/trailing spaces are removed
+                    'method': primary_method  # Use the first method from the CSV (HTTPS or SSH)
                 }
             }
             
             # Handle SD-WAN specific variables, if applicable
             if row['Device Type'] == 'SD-WAN Device':
-                device['sd_wan_var'] = row.get('sd-wan var', 'N/A')  # Use 'N/A' if no value
-                device['sd_wan_var_value'] = row.get('sd-wan var value', 'N/A')  # Use 'N/A' if no value
+                device['sd_wan_var'] = row.get('sd-wan var', 'N/A').strip()  # Use 'N/A' if no value
+                device['sd_wan_var_value'] = row.get('sd-wan var value', 'N/A').strip()  # Use 'N/A' if no value
 
             inventory['networking_devices_for_vlan_changes'].append(device)
 

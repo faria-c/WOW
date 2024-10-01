@@ -14,5 +14,5 @@ SD-WAN Cloud 1,vSmart-1,vSmart,192.168.0.52,SSH,labuser,Labpass01!
 SD-WAN Cloud 1,vSmart-2,vSmart,192.168.0.53,SSH,labuser,Labpass01!
 SD-WAN Cloud 1,vBond-1,vBond,192.168.0.54,SSH,labuser,Labpass01!
 SD-WAN Cloud 2,vBond-2,vBond,192.168.0.55,SSH,labuser,Labpass01!
-SD-WAN Cloud 1,vManage-1,vManage,192.168.0.50,HTTPS, SSH,labuser,Labpass01!
+SD-WAN Cloud 1,vManage-1,vManage,192.168.0.50,HTTPS,labuser,Labpass01!
 N/A,xDomain-Router,Router,192.168.0.90,SSH,labuser,Labpass01!
