@@ -1,0 +1,30 @@
+INFO:root:Skipping Core Switch device 192.168.0.91, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.70, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.71, as only vManage API is used for health checks.
+INFO:root:Skipping Core Switch device 192.168.0.92, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.80, as only vManage API is used for health checks.
+INFO:root:Skipping Hub Switch device 192.168.0.93, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.72, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.73, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.74, as only vManage API is used for health checks.
+INFO:root:Skipping SD-WAN Device device 192.168.0.81, as only vManage API is used for health checks.
+INFO:root:Skipping Spoke Device device 192.168.0.94, as only vManage API is used for health checks.
+INFO:root:Skipping vSmart device 192.168.0.52, as only vManage API is used for health checks.
+INFO:root:Skipping vSmart device 192.168.0.53, as only vManage API is used for health checks.
+INFO:root:Skipping vBond device 192.168.0.54, as only vManage API is used for health checks.
+INFO:root:Skipping vBond device 192.168.0.55, as only vManage API is used for health checks.
+INFO:root:Processing vManage device 192.168.0.50.
+INFO:root:Authenticated successfully with vManage 192.168.0.50
+INFO:root:Device: vManage-1, Reachability: reachable, BFD Sessions: N/A, Status: normal, System IP: 1.1.10.50
+INFO:root:Device: vSmart-1, Reachability: reachable, BFD Sessions: N/A, Status: normal, System IP: 1.1.10.52
+INFO:root:Device: vSmart-2, Reachability: reachable, BFD Sessions: N/A, Status: normal, System IP: 1.1.10.53
+INFO:root:Device: vBond-1, Reachability: reachable, BFD Sessions: N/A, Status: normal, System IP: 1.1.10.54
+INFO:root:Device: vBond-2, Reachability: reachable, BFD Sessions: N/A, Status: normal, System IP: 1.1.10.55
+INFO:root:Device: BR1-cEdge-1, Reachability: reachable, BFD Sessions: 10, Status: normal, System IP: 192.168.0.72
+INFO:root:Device: BR1-cEdge-2, Reachability: reachable, BFD Sessions: 10, Status: normal, System IP: 192.168.0.73
+INFO:root:Device: BR2-cEdge-1, Reachability: reachable, BFD Sessions: 12, Status: normal, System IP: 192.168.0.74
+INFO:root:Device: BR3-cEdge-1, Reachability: reachable, BFD Sessions: 12, Status: normal, System IP: 192.168.0.81
+INFO:root:Device: CL1-cEdge-1, Reachability: reachable, BFD Sessions: 8, Status: normal, System IP: 192.168.0.70
+INFO:root:Device: CL1-cEdge-2, Reachability: reachable, BFD Sessions: 8, Status: normal, System IP: 192.168.0.71
+INFO:root:Device: CL2-cEdge-1, Reachability: reachable, BFD Sessions: 8, Status: normal, System IP: 192.168.0.80
+INFO:root:Skipping Router device 192.168.0.90, as only vManage API is used for health checks.

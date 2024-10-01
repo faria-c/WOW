@@ -136,8 +136,8 @@ networking_devices_for_vlan_changes:
 - connection_details:
     host: 192.168.0.50
     method: HTTPS
-    password: labuser
-    username: ' SSH'
+    password: Labpass01!
+    username: labuser
   device_type: vManage
   hostname: vManage-1
   site: SD-WAN Cloud 1
