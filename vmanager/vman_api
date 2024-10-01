@@ -34,11 +34,16 @@ def authenticate_vmanage(vmanage_host, username, password):
         # Performing the authentication
         response = session.post(auth_url, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
         
+        # Log the response content for debugging purposes
+        logging.debug(f"Authentication response content: {response.text}")
+
+        # Successful authentication response should not contain "html"
         if response.status_code == 200 and "html" not in response.text:
             logging.info(f"Authenticated successfully with vManage {vmanage_host}")
             return session
         else:
             logging.error(f"Authentication failed with vManage {vmanage_host}, Status Code: {response.status_code}")
+            logging.error(f"Response content: {response.text}")  # Log the actual response content for more insight
             return None
 
     except ConnectionError as ce:
