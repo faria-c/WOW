@@ -1,6 +1,7 @@
 import yaml
 import requests
 import logging
+from requests.exceptions import ConnectionError
 
 # Set up logging
 logging.basicConfig(filename='sdwan_health_check.log', level=logging.INFO)
@@ -23,16 +24,21 @@ def authenticate_vmanage(vmanage_host, username, password):
     
     # Creating a session to hold cookies
     session = requests.session()
-    session.verify = False
+    session.verify = False  # Disable SSL certificate verification
 
-    # Performing the authentication
-    response = session.post(auth_url, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
-    
-    if response.status_code == 200 and "html" not in response.text:
-        logging.info(f"Authenticated successfully with vManage {vmanage_host}")
-        return session
-    else:
-        logging.error(f"Failed to authenticate with vManage {vmanage_host}")
+    try:
+        # Performing the authentication
+        response = session.post(auth_url, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
+        
+        if response.status_code == 200 and "html" not in response.text:
+            logging.info(f"Authenticated successfully with vManage {vmanage_host}")
+            return session
+        else:
+            logging.error(f"Authentication failed with vManage {vmanage_host}, Status Code: {response.status_code}")
+            return None
+
+    except ConnectionError as ce:
+        logging.error(f"Failed to connect to vManage {vmanage_host}: {ce}")
         return None
 
 # Function to check SD-WAN device status from vManage
@@ -42,14 +48,18 @@ def check_device_status_vmanage(session, vmanage_host):
     # API to get device status
     url = base_url + "dataservice/device"
     
-    response = session.get(url)
+    try:
+        response = session.get(url)
+        if response.status_code == 200:
+            devices = response.json()["data"]
+            for device in devices:
+                logging.info(f"Device: {device['host-name']}, Reachability: {device['reachability']}, "
+                             f"BFD Sessions: {device['bfdSessionsUp']}, Status: {device['status']}")
+        else:
+            logging.error(f"Failed to retrieve device data from vManage {vmanage_host}, Status Code: {response.status_code}")
     
-    if response.status_code == 200:
-        devices = response.json()["data"]
-        for device in devices:
-            logging.info(f"Device: {device['host-name']}, Reachability: {device['reachability']}, BFD Sessions: {device['bfdSessionsUp']}, Status: {device['status']}")
-    else:
-        logging.error(f"Failed to retrieve device data from vManage {vmanage_host}")
+    except ConnectionError as ce:
+        logging.error(f"Failed to connect to vManage {vmanage_host}: {ce}")
 
 # Main function to process the devices from the inventory
 def process_devices_from_inventory(inventory):
