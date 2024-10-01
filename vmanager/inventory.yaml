@@ -1,6 +1,6 @@
 networking_devices_for_vlan_changes:
 - connection_details:
-    host: CL1-Core-1
+    host: 192.168.0.91
     method: SSH
     password: Labpass01!
     username: labuser
@@ -8,7 +8,7 @@ networking_devices_for_vlan_changes:
   hostname: CL1-Core-1
   site: Colocation Site 1
 - connection_details:
-    host: CL1-cEdge-1
+    host: 192.168.0.70
     method: SSH
     password: Labpass01!
     username: labuser
@@ -18,7 +18,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Colocation Site 1
 - connection_details:
-    host: CL1-cEdge-2
+    host: 192.168.0.71
     method: SSH
     password: Labpass01!
     username: labuser
@@ -28,7 +28,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Colocation Site 1
 - connection_details:
-    host: CL2-Core-1
+    host: 192.168.0.92
     method: SSH
     password: Labpass01!
     username: labuser
@@ -36,7 +36,7 @@ networking_devices_for_vlan_changes:
   hostname: CL2-Core-1
   site: Colocation Site 2
 - connection_details:
-    host: CL2-vEdge-1
+    host: 192.168.0.80
     method: SSH
     password: Labpass01!
     username: labuser
@@ -46,7 +46,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Colocation Site 2
 - connection_details:
-    host: CL2-Hub-1
+    host: 192.168.0.93
     method: SSH
     password: Labpass01!
     username: labuser
@@ -54,7 +54,7 @@ networking_devices_for_vlan_changes:
   hostname: CL2-Hub-1
   site: Colocation Site 2
 - connection_details:
-    host: BR1-cEdge-1
+    host: 192.168.0.72
     method: SSH
     password: Labpass01!
     username: labuser
@@ -64,7 +64,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Branch 1
 - connection_details:
-    host: BR1-cEdge-2
+    host: 192.168.0.73
     method: SSH
     password: Labpass01!
     username: labuser
@@ -74,7 +74,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Branch 1
 - connection_details:
-    host: BR2-cEdge-1
+    host: 192.168.0.74
     method: SSH
     password: Labpass01!
     username: labuser
@@ -84,7 +84,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Branch 2
 - connection_details:
-    host: BR3-vEdge-1
+    host: 192.168.0.81
     method: SSH
     password: Labpass01!
     username: labuser
@@ -94,7 +94,7 @@ networking_devices_for_vlan_changes:
   sd_wan_var_value: N/A
   site: Branch 3
 - connection_details:
-    host: BR4-Spoke1
+    host: 192.168.0.94
     method: SSH
     password: Labpass01!
     username: labuser
@@ -102,7 +102,7 @@ networking_devices_for_vlan_changes:
   hostname: BR4-Spoke1
   site: Branch 4
 - connection_details:
-    host: vSmart-1
+    host: 192.168.0.52
     method: SSH
     password: Labpass01!
     username: labuser
@@ -110,7 +110,7 @@ networking_devices_for_vlan_changes:
   hostname: vSmart-1
   site: SD-WAN Cloud 1
 - connection_details:
-    host: vSmart-2
+    host: 192.168.0.53
     method: SSH
     password: Labpass01!
     username: labuser
@@ -118,7 +118,7 @@ networking_devices_for_vlan_changes:
   hostname: vSmart-2
   site: SD-WAN Cloud 1
 - connection_details:
-    host: vBond-1
+    host: 192.168.0.54
     method: SSH
     password: Labpass01!
     username: labuser
@@ -126,7 +126,7 @@ networking_devices_for_vlan_changes:
   hostname: vBond-1
   site: SD-WAN Cloud 1
 - connection_details:
-    host: vBond-2
+    host: 192.168.0.55
     method: SSH
     password: Labpass01!
     username: labuser
@@ -134,15 +134,15 @@ networking_devices_for_vlan_changes:
   hostname: vBond-2
   site: SD-WAN Cloud 2
 - connection_details:
-    host: vManage-1
+    host: 192.168.0.50
     method: HTTPS
-    password: Labpass01!
-    username: labuser
+    password: labuser
+    username: ' SSH'
   device_type: vManage
   hostname: vManage-1
   site: SD-WAN Cloud 1
 - connection_details:
-    host: xDomain-Router
+    host: 192.168.0.90
     method: SSH
     password: Labpass01!
     username: labuser
